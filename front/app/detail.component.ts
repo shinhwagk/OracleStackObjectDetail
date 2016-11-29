@@ -7,16 +7,6 @@ import { Component } from '@angular/core';
 
 export class OrclObjDtlComponent {
 
-    // template table
-    public templateTable: TemplateTable = new TemplateTable();
-
-    abc() {
-        alert(this.templateTable.owner)
-        alert(this.templateTable.table)
-    }
+ 
 }
-
-export class TemplateTable {
-    owner: string = ""
-    table: string = ""
-}
+ 
