@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'my-app',
+  selector: 'orcl-obj-dtl-table',
   template: `<h1>Hello {{name}}</h1>`,
 })
-export class AppComponent  { name = 'Angular'; }
+export class TemplateTableComponent { name = 'Angular'; }

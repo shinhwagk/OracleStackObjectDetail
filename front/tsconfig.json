@@ -14,10 +14,9 @@
     "suppressImplicitAnyIndexErrors": true
   },
   "include": [
-    "app/*"
+    "app/**/*"
   ],
   "exclude": [
-    "node_modules/*",
-    "**/*-aot.ts"
+    "node_modules/*"
   ]
 }
