@@ -1,0 +1,8 @@
+<div *ngFor="let key of getKeys()">
+  <h3>{{key}}</h3>
+  <hr> {{data.get(key) | json}}
+</div>
+
+
+
+<br><button (click)="goBack()">Back</button>

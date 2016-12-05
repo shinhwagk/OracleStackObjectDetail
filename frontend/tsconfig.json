@@ -7,16 +7,10 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "lib": [
-      "es2015",
+      "es6",
       "dom"
     ],
     "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true
-  },
-  "include": [
-    "app/**/*"
-  ],
-  "exclude": [
-    "node_modules/*"
-  ]
+  }
 }

@@ -8,11 +8,9 @@ export class ApiServices {
   constructor(private _http: Http) {
   }
 
-
-  // template table
-  t_table(pars: string[], name: string ) {
-    const url: string = this.genUrl(name)
-    const body = { dbname: "aaa", pars: pars }
+  execSql(sql: string, pars: string[]) {
+    const url: string = this.genUrl('execsql')
+    const body = { dbname: "aaa", sqltext: sql, pars: pars }
     console.info(body)
     return this._http.post(url, JSON.stringify(body), { headers: this.headers }).map((res: Response) => res.json())
   }
