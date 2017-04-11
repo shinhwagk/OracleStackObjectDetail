@@ -6,7 +6,7 @@
   },
   "objects": [
     {
-      "query": "select * from abc where a=? and b=?"
+      "query": "select * from abc where a=? and b=?" // or query file because sql text long
     }, {
       "query": "select * from ccc where a=? and b=?"
     }
