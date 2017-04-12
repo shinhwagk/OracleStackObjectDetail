@@ -1,6 +1,6 @@
 import { InputType } from './input-type.enum';
 
 export interface Input {
-  type: InputType
-  value?: string
+  type: InputType;
+  value?: string;
 }

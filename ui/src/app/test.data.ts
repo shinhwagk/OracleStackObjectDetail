@@ -1,13 +1,19 @@
-import { Object } from './object';
+import { OrclObject } from './orclobject.itf';
 import { InputType } from './input-type.enum';
 
-export const data: Object[] = [{
+export const data2 = [{
+  table_name: "b",
+  table_owner: "cc"
+}]
+
+export const data: OrclObject[] = [{
   name: 'table1',
   input: {
     type: InputType.OPTION,
     value: 'aaaaa'
   },
   details: [{
+    name: "a",
     query: 'select aaa'
   }]
 }, {
@@ -17,6 +23,7 @@ export const data: Object[] = [{
     value: 'aaaaa'
   },
   details: [{
+    name: "a",
     query: 'select aaa'
   }]
 }, {
@@ -26,6 +33,7 @@ export const data: Object[] = [{
     value: 'aaaaa'
   },
   details: [{
+    name: "a",
     query: 'select aaa'
   }]
 }, {
@@ -35,6 +43,7 @@ export const data: Object[] = [{
     value: 'aaaaa'
   },
   details: [{
+    name: "a",
     query: 'select aaa'
   }]
 }, {
@@ -44,6 +53,7 @@ export const data: Object[] = [{
     value: 'aaaaa'
   },
   details: [{
+    name: "a",
     query: 'select aaa'
   }]
 }, {
@@ -53,6 +63,7 @@ export const data: Object[] = [{
     value: 'aaaaa'
   },
   details: [{
+    name: "a",
     query: 'select aaa'
   }]
 }, {
@@ -62,6 +73,7 @@ export const data: Object[] = [{
     value: 'aaaaa'
   },
   details: [{
+    name: "a",
     query: 'select aaa'
   }]
 }];

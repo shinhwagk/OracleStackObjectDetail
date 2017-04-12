@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { data } from './test.data';
-import { Input } from './input';
+
+import { Input } from './input.itf';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +8,9 @@ import { Input } from './input';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   title = 'oracle object details.';
 
-  data = data;
-  inputs = [{'owner':'xxx','name':'abccs'}];
-  abc(){
-    this.inputs[0]
-  }
+  names = ['table', 'trggier'];
+
 }

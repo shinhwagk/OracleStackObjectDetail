@@ -1,26 +1,9 @@
-<h1>
-	{{title}}
-</h1>
+<h1>{{title}}</h1>
 
 <div class="container-fluid">
-	<div class="row" >
-		<div class="col-2" *ngFor="let object of data; let i=index">
-			<div class="card" >
-				<div class="card-header">{{object.name}}</div>
-				<div class="card-block">
-					{{ object.input.type }}
-					<div [ngSwitch]="object.input.type">
-						<div *ngSwitchCase="0">
-
-							
-							<select>
-								<option>{{inputs[0].name | json}}</option>
-							</select>
-						</div>
-						<div *ngSwitchDefault >11</div>
-					</div>
-				</div>
-			</div>
+	<div class="row">
+		<div class="col-2" *ngFor="let name of names">
+			<app-input [objectName]="name"></app-input>
 		</div>
 	</div>
 </div>
