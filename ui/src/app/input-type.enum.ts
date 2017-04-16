@@ -1,3 +1,3 @@
 export enum InputType {
-  OPTION
+  SELECT, INPUT
 }

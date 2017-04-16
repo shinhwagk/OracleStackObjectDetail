@@ -1,3 +1,19 @@
-<div [ngSwitch]="data.input.type">
-  <div *ngSwitchCase="inputType(data.input.type)">111</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2" *ngFor="let obj of objs">
+      <div class="card">
+        <div class="card-header">{{obj.name}}</div>
+        <div class="card-block" [ngSwitch]="obj.input.type">
+          <div *ngSwitchCase="inputType('SELECT')">
+            <input-select #input></input-select>
+            <button (click)="displayDetails(input.params)">submit</button>
+          </div>
+          <div *ngSwitchCase="inputType('INPUT')">
+            <input-input #timer></input-input>
+            <button (click)="displayDetails(input.params)">submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

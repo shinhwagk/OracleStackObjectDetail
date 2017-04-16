@@ -9,7 +9,7 @@ export const data2 = [{
 export const data: OrclObject[] = [{
   name: 'table1',
   input: {
-    type: InputType.OPTION,
+    type: InputType.SELECT,
     value: 'aaaaa'
   },
   details: [{
@@ -19,7 +19,7 @@ export const data: OrclObject[] = [{
 }, {
   name: 'table2',
   input: {
-    type: InputType.OPTION,
+    type: InputType.SELECT,
     value: 'aaaaa'
   },
   details: [{
@@ -29,7 +29,7 @@ export const data: OrclObject[] = [{
 }, {
   name: 'table2',
   input: {
-    type: InputType.OPTION,
+    type: InputType.SELECT,
     value: 'aaaaa'
   },
   details: [{
@@ -39,7 +39,7 @@ export const data: OrclObject[] = [{
 }, {
   name: 'table2',
   input: {
-    type: InputType.OPTION,
+    type: InputType.SELECT,
     value: 'aaaaa'
   },
   details: [{
@@ -49,7 +49,7 @@ export const data: OrclObject[] = [{
 }, {
   name: 'table2',
   input: {
-    type: InputType.OPTION,
+    type: InputType.SELECT,
     value: 'aaaaa'
   },
   details: [{
@@ -59,7 +59,7 @@ export const data: OrclObject[] = [{
 }, {
   name: 'table2',
   input: {
-    type: InputType.OPTION,
+    type: InputType.SELECT,
     value: 'aaaaa'
   },
   details: [{
@@ -69,7 +69,7 @@ export const data: OrclObject[] = [{
 }, {
   name: 'table2',
   input: {
-    type: InputType.OPTION,
+    type: InputType.SELECT,
     value: 'aaaaa'
   },
   details: [{

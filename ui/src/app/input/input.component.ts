@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router, NavigationExtras } from '@angular/router';
+
 import { OrclObject } from '../orclobject.itf';
 import { InputType } from '../input-type.enum';
 
@@ -7,34 +9,32 @@ import { InputType } from '../input-type.enum';
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.css']
 })
-export class InputComponent implements OnInit {
+export class InputComponent {
+  names = ['table', 'trggier'];
 
-  constructor() { }
+  objs = this.names.map(this.getDetailsByName)
 
-  ngOnInit() {
-  }
+  detailsParmesL: any[] = []
 
-  @Input('objectName') name: string;
-
-  inputType(inputType: InputType) {
-    return InputType[inputType]
-  }
-
-  data: OrclObject = {
-    name: "table object",
-    input: {
-      type: InputType.OPTION,
-      value: "select 'a', 'b' from dual"
-    },
-    details: [
-      {
-        name: "abc",
-        query: "select * from abc where a=? and b=?"
-      },
-      {
-        name: "33",
-        query: "select * from ccc where a=? and b=?"
+  getDetailsByName(name: string) {
+    return {
+      name: name,
+      input: {
+        type: InputType.SELECT,
+        value: "select 'a', 'b' from dual"
       }
-    ]
+    }
+  }
+
+  constructor(
+    private router: Router
+  ) { }
+
+  displayDetails(params: any[]) {
+    this.router.navigate(['details', params]);
+  }
+
+  inputType(inputTypeString: string) {
+    return InputType[inputTypeString]
   }
 }

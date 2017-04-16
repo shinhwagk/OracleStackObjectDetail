@@ -1,9 +1,5 @@
 {
     "name": "table object",
-    "input": {
-        "type": "select",
-        "value": "select 'a', 'b' from dual"
-    },
     "details": [
         {
             "name": "abc",

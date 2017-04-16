@@ -11,6 +11,4 @@ export class AppComponent {
 
   title = 'oracle object details.';
 
-  names = ['table', 'trggier'];
-
 }
