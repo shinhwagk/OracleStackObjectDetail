@@ -5,7 +5,7 @@
         <div class="card-header">{{obj.name}}</div>
         <div class="card-block" [ngSwitch]="obj.input.type">
           <div *ngSwitchCase="inputType('SELECT')">
-            <input-select #input></input-select>
+            <input-select [sqlText]="obj.input.value" #input></input-select>
             <button (click)="displayDetails(input.params)">submit</button>
           </div>
           <div *ngSwitchCase="inputType('INPUT')">

@@ -1,0 +1,11 @@
+<select *ngFor="let name of names; let i=index">
+  <option *ngFor="let value of options[i]" [value]="value">{{value}}</option>
+</select>
+
+
+<select (change)="aaa=$event.target.value">  
+    <option [value]="'ggg'">ggg</option>
+    <option [value]="'g2gg'">ggg1</option>
+</select>
+
+<button (click)="abc()">aaa</button>

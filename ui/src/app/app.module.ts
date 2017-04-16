@@ -9,6 +9,7 @@ import { InputComponent } from './input/input.component';
 import { SelectInputComponent } from './input/select-input.component';
 import { InputInputComponent } from './input/input-input.component';
 import { AppRoutingModule } from './app-routing.module'
+import { QueryService } from './query.service';
 import { OutputComponent } from './output/output.component';
 
 @NgModule({
@@ -24,7 +25,9 @@ import { OutputComponent } from './output/output.component';
     HttpModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    QueryService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
