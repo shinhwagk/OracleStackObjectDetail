@@ -11,12 +11,10 @@ import { QueryService } from '../query.service';
 })
 export class SelectInputComponent implements OnInit, InputInterface {
 
-  @Input() sqlText: string;
-
   params: string[] = [];
-  aaa
-  abc(){
-    console.info(this.aaa)
+
+  setParams(idx: number, arg: string) {
+    this.params[idx] = arg
   }
 
   selects: string[][] = [['owner', 'table'], ["aaa", "xxxx"], ["aaa2", "xx2xx"]];
@@ -28,18 +26,15 @@ export class SelectInputComponent implements OnInit, InputInterface {
 
   formatValue(values: Array<string[]>) {
     this.names = values[0]
-    console.info("names", this.names)
     this.selectLength = this.names.length
-    console.info("length", this.selectLength)
     values.shift()
-    console.info("options", values)
     this.options = Array.from({ length: this.selectLength }, () => [])
 
     values.forEach(vals => {
       for (let i = 0; i <= this.selectLength - 1; i++) {
         const v: string = vals[i]
         this.options[i].push(v)
-        console.info(`option: ${i}`,this.options[0])
+        console.info(`option: ${i}`, this.options[0])
       }
     })
     return;

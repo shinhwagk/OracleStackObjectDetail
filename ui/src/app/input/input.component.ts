@@ -30,7 +30,8 @@ export class InputComponent {
     private router: Router
   ) { }
 
-  displayDetails(params: any[]) {
+  displayDetails(params: any[],sqlText:string) {
+    alert(sqlText)
     this.router.navigate(['details', params]);
   }
 

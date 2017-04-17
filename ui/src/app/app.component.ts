@@ -4,8 +4,12 @@ import { Input } from './input.itf';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `
+    <nav class="navbar navbar-light bg-faded">
+      <a class="navbar-brand" href="#">{{title}}</a>
+    </nav>
+    <router-outlet></router-outlet>
+  `
 })
 export class AppComponent {
 

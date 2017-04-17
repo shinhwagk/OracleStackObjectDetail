@@ -5,12 +5,12 @@
         <div class="card-header">{{obj.name}}</div>
         <div class="card-block" [ngSwitch]="obj.input.type">
           <div *ngSwitchCase="inputType('SELECT')">
-            <input-select [sqlText]="obj.input.value" #input></input-select>
-            <button (click)="displayDetails(input.params)">submit</button>
+            <input-select #input></input-select>
+            <button (click)="displayDetails(input.params,obj.input.value)">submit</button>
           </div>
           <div *ngSwitchCase="inputType('INPUT')">
             <input-input #timer></input-input>
-            <button (click)="displayDetails(input.params)">submit</button>
+            <button (click)="displayDetails(input.params,obj.input.value)">submit</button>
           </div>
         </div>
       </div>
