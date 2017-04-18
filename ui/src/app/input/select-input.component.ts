@@ -11,42 +11,59 @@ import { QueryService } from '../query.service';
 })
 export class SelectInputComponent implements OnInit, InputInterface {
 
-  inputs = [{name:"owner",sql:"xxx"}]
+  // inputs = [{ name: "owner", sql: "xxx" }];
+
+  @Input() sqlText;
 
   params: string[] = [];
 
+  values: string[][] = [];
+  names: string[] = [];
+  options: string[][] = [];
 
-
-  names: string[] = []
-  options: string[][] = []
   selectLength: number;
 
-  ready = false
+  ready = false;
+  first = []
 
   constructor(private qs: QueryService) { }
 
   setParams(idx: number, arg: string) {
-    this.params[idx] = arg
+    this.params[idx] = arg;
   }
 
-  formatValue(values: Array<string[]>) {
-    this.names = values[0]
-    this.selectLength = this.names.length
-    values.shift();
-    this.options = Array.from({ length: this.selectLength }, () => [])
+  filter(idx: number, val: string) {
+    alert(1)
+    this.values[idx].filter(v => val === v);
+  }
 
-    values.forEach(vals => {
-      for (let i = 0; i <= this.selectLength - 1; i++) {
-        const v: string = vals[i]
-        this.options[i].push(v)
-        console.info(`option: ${i}`, this.options[0])
+  filterValues(idx: number) {
+    let tmpValues = this.values;
+    if (this.params.length >= idx) {
+      for (let i = 0; i < idx && this.params.length >= idx; i++) {
+        const param = this.params[i];
+        tmpValues = tmpValues.filter(value => value[i] === param);
       }
-    })
-    this.ready = true
-    return;
+      return Array.from(new Set(tmpValues.map(p => p[idx])));
+    } else {
+      return []
+    }
+  }
+
+  initQueryResult(values: Array<string[]>) {
+    this.names = values[0];
+    this.selectLength = this.names.length;
+    values.shift();
+    this.values = values;
+    this.ready = true;
+  }
+
+  init() {
+    alert(2)
+    this.qs.rdbmsQuery(this.sqlText, []).then(rs => this.initQueryResult(rs));
   }
 
   ngOnInit() {
-    this.qs.rdbmsQuery('select owner,table_name from dba_tables where rownum <10', []).then(p => this.formatValue(p));
+
   }
 }
