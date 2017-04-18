@@ -11,23 +11,28 @@ import { QueryService } from '../query.service';
 })
 export class SelectInputComponent implements OnInit, InputInterface {
 
+  inputs = [{name:"owner",sql:"xxx"}]
+
   params: string[] = [];
+
+
+
+  names: string[] = []
+  options: string[][] = []
+  selectLength: number;
+
+  ready = false
+
+  constructor(private qs: QueryService) { }
 
   setParams(idx: number, arg: string) {
     this.params[idx] = arg
   }
 
-  selects: string[][] = [['owner', 'table'], ["aaa", "xxxx"], ["aaa2", "xx2xx"]];
-  names: string[] = []
-  options: string[][] = []
-  selectLength: number;
-
-  constructor(private qs: QueryService) { }
-
   formatValue(values: Array<string[]>) {
     this.names = values[0]
     this.selectLength = this.names.length
-    values.shift()
+    values.shift();
     this.options = Array.from({ length: this.selectLength }, () => [])
 
     values.forEach(vals => {
@@ -37,13 +42,11 @@ export class SelectInputComponent implements OnInit, InputInterface {
         console.info(`option: ${i}`, this.options[0])
       }
     })
+    this.ready = true
     return;
   }
 
   ngOnInit() {
-    console.info("start")
-    console.info(JSON.stringify(this.selects))
-    console.info(JSON.stringify(this.formatValue(this.selects)), "xxx")
-    // this.qs.rdbmsQuery(this.sqlText, []).then(this.formatValue);
+    this.qs.rdbmsQuery('select owner,table_name from dba_tables where rownum <10', []).then(p => this.formatValue(p));
   }
 }
