@@ -13,6 +13,10 @@ export class InputInputComponent implements OnInit, InputInterface {
 
   constructor() { }
 
+  init(){
+    alert(2)
+  }
+
   ngOnInit() {
   }
 }

@@ -21,21 +21,25 @@ export class InputComponent {
       name: name,
       input: {
         type: InputType.SELECT,
-        value: "select 'a', 'b' from dual"
+        value: 'select owner,table_name from dba_tables where owner in (\'SYS\',\'SYSTEM\')'
       }
-    }
+    };
+  }
+
+  activate(obj){
+    obj.init()
   }
 
   constructor(
     private router: Router
   ) { }
 
-  displayDetails(params: any[],sqlText:string) {
-    alert(sqlText)
-    this.router.navigate(['details', params]);
+  displayDetails(params: any[],sqlText: string) {
+    alert(JSON.stringify(params));
+    // this.router.navigate(['details', params]);
   }
 
   inputType(inputTypeString: string) {
-    return InputType[inputTypeString]
+    return InputType[inputTypeString];
   }
 }

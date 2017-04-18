@@ -1,7 +1,7 @@
 <div *ngIf="!ready">loading...</div>
 <select *ngFor="let name of names; let i=index" (change)="setParams(i,$event.target.value)">
   <option disabled>{{names[i]}}</option>
-  <option *ngFor="let value of options[i]" [value]="value">{{value}}</option>
+  <option *ngFor="let value of filterValues(i)" [value]="value">{{value}}</option>
 </select>
 <!--
 

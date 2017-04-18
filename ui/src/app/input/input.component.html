@@ -1,15 +1,18 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-2" *ngFor="let obj of objs">
-      <div class="card">
-        <div class="card-header">{{obj.name}}</div>
-        <div class="card-block" [ngSwitch]="obj.input.type">
-          <div *ngSwitchCase="inputType('SELECT')">
-            <input-select #input></input-select>
+      <div class="card" [ngSwitch]="obj.input.type">
+        <div *ngSwitchCase="inputType('SELECT')">
+          <div class="card-header" (click)="input.init()">{{obj.name}}</div>
+          <div class="card-block">
+            <input-select [sqlText]="obj.input.value" #input></input-select>
             <button (click)="displayDetails(input.params,obj.input.value)">submit</button>
           </div>
-          <div *ngSwitchCase="inputType('INPUT')">
-            <input-input #timer></input-input>
+        </div>
+        <div *ngSwitchCase="inputType('INPUT')">
+          <div class="card-header" (click)="input.init()">{{obj.name}}</div>
+          <div class="card-block">
+            <input-input #input></input-input>
             <button (click)="displayDetails(input.params,obj.input.value)">submit</button>
           </div>
         </div>

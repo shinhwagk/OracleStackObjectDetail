@@ -1,6 +1,6 @@
 {
   "/query": {
-    "target": "http://localhost:8082",
+    "target": "http://localhost:8083",
     "secure": false
   }
 }
