@@ -26,7 +26,7 @@ export class InputComponent {
     };
   }
 
-  activate(obj){
+  activate(obj) {
     obj.init()
   }
 
@@ -34,7 +34,7 @@ export class InputComponent {
     private router: Router
   ) { }
 
-  displayDetails(params: any[],sqlText: string) {
+  displayDetails(params: any[], sqlText: string) {
     alert(JSON.stringify(params));
     // this.router.navigate(['details', params]);
   }

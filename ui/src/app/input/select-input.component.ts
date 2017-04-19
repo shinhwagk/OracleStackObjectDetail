@@ -6,14 +6,12 @@ import { QueryService } from '../query.service';
 @Component({
   selector: 'input-select',
   templateUrl: './select-input.component.html',
-  styleUrls: ['./select-input.component.css'],
+  styleUrls: ['./select-input.component.css', './card.bootstrap.css'],
   providers: [QueryService]
 })
 export class SelectInputComponent implements OnInit, InputInterface {
 
-  // inputs = [{ name: "owner", sql: "xxx" }];
-
-  @Input() sqlText;
+  @Input() obj;
 
   params: string[] = [];
 
@@ -24,7 +22,7 @@ export class SelectInputComponent implements OnInit, InputInterface {
   selectLength: number;
 
   ready = false;
-  first = []
+  first = [];
 
   constructor(private qs: QueryService) { }
 
@@ -33,7 +31,7 @@ export class SelectInputComponent implements OnInit, InputInterface {
   }
 
   filter(idx: number, val: string) {
-    alert(1)
+    alert(1);
     this.values[idx].filter(v => val === v);
   }
 
@@ -46,7 +44,7 @@ export class SelectInputComponent implements OnInit, InputInterface {
       }
       return Array.from(new Set(tmpValues.map(p => p[idx])));
     } else {
-      return []
+      return [];
     }
   }
 
@@ -59,8 +57,8 @@ export class SelectInputComponent implements OnInit, InputInterface {
   }
 
   init() {
-    alert(2)
-    this.qs.rdbmsQuery(this.sqlText, []).then(rs => this.initQueryResult(rs));
+    alert(2);
+    this.qs.rdbmsQuery(this.obj.input.value, []).then(rs => this.initQueryResult(rs));
   }
 
   ngOnInit() {

@@ -1,8 +1,15 @@
-<div *ngIf="!ready">loading...</div>
-<select *ngFor="let name of names; let i=index" (change)="setParams(i,$event.target.value)">
-  <option disabled>{{names[i]}}</option>
-  <option *ngFor="let value of filterValues(i)" [value]="value">{{value}}</option>
-</select>
+<div class="card" >
+  <div class="card-header" (click)="init()">{{obj.name}}</div>
+  <div class="card-block">
+    <div *ngIf="!ready">loading...</div>
+    <select *ngFor="let name of names; let i=index" (change)="setParams(i,$event.target.value)">
+      <option disabled>{{names[i]}}</option>
+      <option *ngFor="let value of filterValues(i)" [value]="value">{{value}}</option>
+    </select>
+    <button (click)="displayDetails(params,obj.input.value)">submit</button>
+  </div>
+</div>
+
 <!--
 
 <select (change)="aaa=$event.target.value">
