@@ -1,0 +1,16 @@
+<nav class="navbar navbar-light navbar-toggleable-md bg-faded">
+  <a class="navbar-brand" href="#">{{title}}</a>
+  <div class="form-inline">
+    <input type="text" #jdbcUrl placeholder="jdbcUrl">
+    <input type="text" #username placeholder="username">
+    <input type="text" #password placeholder="password">
+    <button (click)="add_conn(jdbcUrl.value,username.value,password.value)">+</button>
+  </div>
+  <select *ngFor="let conn of connects">
+        <option>{{conn.jdbcUrl}} -- {{conn.username}}</option>
+  </select>
+</nav>
+
+<app-input *ngIf="true" [conn]="xxx"></app-input>
+
+<router-outlet></router-outlet>

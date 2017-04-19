@@ -30,11 +30,6 @@ export class SelectInputComponent implements OnInit, InputInterface {
     this.params[idx] = arg;
   }
 
-  filter(idx: number, val: string) {
-    alert(1);
-    this.values[idx].filter(v => val === v);
-  }
-
   filterValues(idx: number) {
     let tmpValues = this.values;
     if (this.params.length >= idx) {
@@ -57,8 +52,10 @@ export class SelectInputComponent implements OnInit, InputInterface {
   }
 
   init() {
-    alert(2);
-    this.qs.rdbmsQuery(this.obj.input.value, []).then(rs => this.initQueryResult(rs));
+    this.qs.rdbmsQuery(this.obj.input.value, []).then(rs => {
+      this.initQueryResult(rs);
+      this.ready = true;
+    });
   }
 
   ngOnInit() {

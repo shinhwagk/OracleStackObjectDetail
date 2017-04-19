@@ -1,8 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router, NavigationExtras } from '@angular/router';
 
-import { OrclObject } from '../orclobject.itf';
-import { InputType } from '../input-type.enum';
+import { OrclObject } from './orclobject.itf';
+import { InputType } from './input-type.enum';
 
 @Component({
   selector: 'app-input',
@@ -12,9 +11,10 @@ import { InputType } from '../input-type.enum';
 export class InputComponent {
   names = ['table', 'trggier'];
 
+  @Input() conn ;
   objs = this.names.map(this.getDetailsByName)
 
-  detailsParmesL: any[] = []
+  constructor() { }
 
   getDetailsByName(name: string) {
     return {
@@ -24,19 +24,6 @@ export class InputComponent {
         value: 'select owner,table_name from dba_tables where owner in (\'SYS\',\'SYSTEM\')'
       }
     };
-  }
-
-  activate(obj) {
-    obj.init()
-  }
-
-  constructor(
-    private router: Router
-  ) { }
-
-  displayDetails(params: any[], sqlText: string) {
-    alert(JSON.stringify(params));
-    // this.router.navigate(['details', params]);
   }
 
   inputType(inputTypeString: string) {

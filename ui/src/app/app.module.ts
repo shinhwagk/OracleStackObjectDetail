@@ -5,12 +5,12 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { InputComponent } from './input/input.component';
+import { InputComponent } from './input.component';
 import { SelectInputComponent } from './input/select-input.component';
 import { InputInputComponent } from './input/input-input.component';
 import { AppRoutingModule } from './app-routing.module'
 import { QueryService } from './query.service';
-import { OutputComponent } from './output/output.component';
+import { DetailsComponent } from './details.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import { OutputComponent } from './output/output.component';
     InputComponent,
     SelectInputComponent,
     InputInputComponent,
-    OutputComponent
+    DetailsComponent
   ],
   imports: [
     BrowserModule,

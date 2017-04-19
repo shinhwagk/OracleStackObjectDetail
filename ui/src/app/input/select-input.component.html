@@ -1,7 +1,6 @@
-<div class="card" >
-  <div class="card-header" (click)="init()">{{obj.name}}</div>
+<div class="card">
+  <div class="card-header" (click)="init()" [class.alert]="ready" [class.alert-success]="ready">{{obj.name}}</div>
   <div class="card-block">
-    <div *ngIf="!ready">loading...</div>
     <select *ngFor="let name of names; let i=index" (change)="setParams(i,$event.target.value)">
       <option disabled>{{names[i]}}</option>
       <option *ngFor="let value of filterValues(i)" [value]="value">{{value}}</option>
@@ -9,12 +8,3 @@
     <button (click)="displayDetails(params,obj.input.value)">submit</button>
   </div>
 </div>
-
-<!--
-
-<select (change)="aaa=$event.target.value">
-    <option [value]="'ggg'">ggg</option>
-    <option [value]="'g2gg'">ggg1</option>
-</select>
-
-<button (click)="abc()">aaa</button>-->

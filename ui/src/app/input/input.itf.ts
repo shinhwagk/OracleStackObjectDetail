@@ -1,3 +1,3 @@
 export interface InputInterface {
-  params:any[]
+  params: any[]
 }

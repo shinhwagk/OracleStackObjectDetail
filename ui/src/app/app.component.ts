@@ -4,15 +4,19 @@ import { Input } from './input.itf';
 
 @Component({
   selector: 'app-root',
-  template: `
-    <nav class="navbar navbar-light bg-faded">
-      <a class="navbar-brand" href="#">{{title}}</a>
-    </nav>
-    <router-outlet></router-outlet>
-  `
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
 
   title = 'oracle object details.';
 
+  connects = []
+
+  add_conn(jdbcUrl, username, password) {
+    this.connects.push({
+      jdbcUrl: jdbcUrl,
+      username: username,
+      password: password
+    })
+  }
 }
