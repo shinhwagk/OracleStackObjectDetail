@@ -12,6 +12,8 @@ export class AppComponent {
 
   connects = []
 
+  current_connect
+
   add_conn(jdbcUrl, username, password) {
     this.connects.push({
       jdbcUrl: jdbcUrl,

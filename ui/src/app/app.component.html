@@ -6,11 +6,13 @@
     <input type="text" #password placeholder="password">
     <button (click)="add_conn(jdbcUrl.value,username.value,password.value)">+</button>
   </div>
-  <select *ngFor="let conn of connects">
-        <option>{{conn.jdbcUrl}} -- {{conn.username}}</option>
+  <select #abc (change)="abc.value">
+    <option *ngFor="let conn of connects" [value]="conn">{{conn.jdbcUrl}} -- {{conn.username}}</option>
   </select>
 </nav>
 
-<app-input *ngIf="true" [conn]="xxx"></app-input>
+<app-input [conn]="abc.selectedIndex"></app-input>
+
+a{{abc.selectedIndex}}b
 
 <router-outlet></router-outlet>
