@@ -1,12 +1,10 @@
-{
-   [
-        {
-            "name": "abc",
-            "query": "select * from abc where a=? and b=?"
-        },
-        {
-            "name": "33",
-            "query": "select * from ccc where a=? and b=?"
-        }
-    ]
-}
+[
+     {
+         "name": "abc",
+         "query": "select * from abc where a=? and b=?"
+     },
+     {
+         "name": "33",
+         "query": "select * from ccc where a=? and b=?"
+     }
+ ]
