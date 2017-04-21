@@ -2,14 +2,16 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { OrclObject } from './orclobject.itf';
 import { InputType } from './input-type.enum';
+import { QueryService } from './query.service';
 
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
-  styleUrls: ['./input.component.css']
+  styleUrls: ['./input.component.css'],
+  providers: [QueryService]
 })
-export class InputComponent {
-  names = ['table', 'trggier'];
+export class InputComponent implements OnInit {
+  names = [];
 
   @Input()
   set conn(conn) {
@@ -18,23 +20,27 @@ export class InputComponent {
 
   _conn;
 
+  constructor(private qs: QueryService) { }
   // get conn() {
   //   return this._conn;
   // }
 
-  objs = this.names.map(this.getDetailsByName)
+  objs = []
 
-  getDetailsByName(name: string) {
-    return {
-      name: name,
-      input: {
-        type: InputType.SELECT,
-        value: 'select owner,table_name from dba_tables where owner in (\'SYS\',\'SYSTEM\')'
-      }
-    };
+  getObjectByName(name: string) {
+    if(name=="table"){
+      const url = `https://raw.githubusercontent.com/shinhwagk/OracleStackObjectDetail/config/objects/${name}.json`
+      this.qs.configQuery(url)
+        .then(object => this.objs.push(object))
+        .catch(e => console.error(e._body))
+    }
   }
 
-  inputType(inputTypeString: string) {
-    return InputType[inputTypeString];
+  ngOnInit() {
+    const url = "https://raw.githubusercontent.com/shinhwagk/OracleStackObjectDetail/config/objects.json"
+    this.qs.configQuery(url).then(names => {
+      this.names = names
+      this.names.forEach(name => this.getObjectByName(name))
+    })
   }
 }

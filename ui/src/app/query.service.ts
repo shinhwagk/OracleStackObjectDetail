@@ -27,4 +27,9 @@ export class QueryService {
       .map(response => response.json())
       .toPromise();
   }
+
+  configQuery(url:string) {
+    return this.http.get(url).map(response => response.json())
+      .toPromise();
+  }
 }

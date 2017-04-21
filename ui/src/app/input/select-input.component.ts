@@ -24,7 +24,6 @@ export class SelectInputComponent implements InputInterface {
   selectLength: number;
 
   ready = false;
-  first = [];
 
   constructor(private qs: QueryService) { }
 
@@ -47,14 +46,15 @@ export class SelectInputComponent implements InputInterface {
 
   initQueryResult(values: Array<string[]>) {
     this.names = values[0];
+    console.info(this.names)
     this.selectLength = this.names.length;
     values.shift();
     this.values = values;
-    this.ready = true;
   }
 
   init() {
     this.qs.rdbmsQuery(this.conn, this.obj.input.value, []).then(rs => {
+      console.info(rs)
       this.initQueryResult(rs);
       this.ready = true;
     });
