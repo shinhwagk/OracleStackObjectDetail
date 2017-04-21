@@ -1,6 +1,5 @@
 {
-    "name": "table",
-    "details": [
+   [
         {
             "name": "abc",
             "query": "select * from abc where a=? and b=?"
