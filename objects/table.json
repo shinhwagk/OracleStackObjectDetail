@@ -1,1 +1,1 @@
-{ "name": "table", "input": {"type": "select", "value": "select 'a', 'b' from dual" } }
+{ "name": "table", "input": {"type": "select", "value": "select owner,table_name from dba_tables where rownum <10" } }
