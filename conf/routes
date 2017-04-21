@@ -1,9 +1,0 @@
-GET /    controllers.Application.index
-
-
-GET /$file<app\.bundle\.js>   controllers.Assets.at(path="/public", file)
-GET /app/$file<.*?\.html>   controllers.Assets.versioned(path="/public", file)
-GET /$file<.*?\.js>   controllers.Assets.versioned(path="/public", file: Asset)
-GET /$file<.*?\.css>   controllers.Assets.versioned(path="/public", file: Asset)
-
-GET /assets/*file   controllers.Assets.versioned(path="/public", file: Asset)
