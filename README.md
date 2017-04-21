@@ -1,1 +1,0 @@
-# oracle-object-detail
