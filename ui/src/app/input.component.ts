@@ -12,19 +12,17 @@ export class InputComponent {
   names = ['table', 'trggier'];
 
   @Input()
-  set conn(c: string) {
-    this.c = c
+  set conn(conn) {
+    this._conn = conn
   }
-  c = "1"
 
-  get conn() { return this.c }
+  _conn;
+
+  // get conn() {
+  //   return this._conn;
+  // }
 
   objs = this.names.map(this.getDetailsByName)
-
-  constructor() {
-    console.log(1111)
-    console.log(this.c)
-  }
 
   getDetailsByName(name: string) {
     return {

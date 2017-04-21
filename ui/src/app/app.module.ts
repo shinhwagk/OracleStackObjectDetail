@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { InputComponent } from './input.component';
 import { SelectInputComponent } from './input/select-input.component';
 import { InputInputComponent } from './input/input-input.component';
-import { AppRoutingModule } from './app-routing.module'
+import { AppRoutingModule } from './app-routing.module';
 import { QueryService } from './query.service';
 import { DetailsComponent } from './details.component';
 
@@ -23,7 +23,8 @@ import { DetailsComponent } from './details.component';
   imports: [
     BrowserModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [
     QueryService

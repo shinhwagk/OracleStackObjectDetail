@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { InputInterface } from './input.itf';
 import { QueryService } from '../query.service';
+import { ConnInfo } from '../queryinfo.itf';
 
 @Component({
   selector: 'input-select',
@@ -9,9 +10,10 @@ import { QueryService } from '../query.service';
   styleUrls: ['./select-input.component.css', './card.bootstrap.css'],
   providers: [QueryService]
 })
-export class SelectInputComponent implements OnInit, InputInterface {
+export class SelectInputComponent implements InputInterface {
 
   @Input() obj;
+  @Input() conn: ConnInfo;
 
   params: string[] = [];
 
@@ -52,13 +54,9 @@ export class SelectInputComponent implements OnInit, InputInterface {
   }
 
   init() {
-    this.qs.rdbmsQuery(this.obj.input.value, []).then(rs => {
+    this.qs.rdbmsQuery(this.conn, this.obj.input.value, []).then(rs => {
       this.initQueryResult(rs);
       this.ready = true;
     });
-  }
-
-  ngOnInit() {
-
   }
 }

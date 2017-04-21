@@ -1,8 +1,8 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-2" *ngFor="let obj of objs" [ngSwitch]="obj.input.type">
-      <input-select *ngSwitchCase="inputType('SELECT')" [obj]="obj"> </input-select>
-      <input-input *ngSwitchCase="inputType('INPUT')" [obj]="obj"> </input-input>
+      <input-select *ngSwitchCase="inputType('SELECT')" [obj]="obj" [conn]="_conn"> </input-select>
+      <input-input *ngSwitchCase="inputType('INPUT')" [obj]="obj" [conn]="_conn"> </input-input>
     </div>
   </div>
 </div>

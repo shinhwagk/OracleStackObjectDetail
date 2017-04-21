@@ -16,14 +16,9 @@ export class QueryService {
 
   constructor(private http: Http) { }
 
-  rdbmsQuery(sqlText: string, args: any[]): Promise<Array<string>[]> {
-    const conninfo: ConnInfo = {
-      jdbcUrl: 'jdbc:oracle:thin:@10.65.193.38:1521/func3',
-      username: 'system',
-      password: 'oracle1171'
-    };
+  rdbmsQuery(conn: ConnInfo, sqlText: string, args: any[]): Promise<Array<string>[]> {
     const queryinfo: QueryInfo = {
-      ci: conninfo,
+      ci: conn,
       sqlText: sqlText,
       parameters: <string[]>args
     };

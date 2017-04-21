@@ -12,13 +12,10 @@ export class AppComponent {
 
   connects = []
 
-  current_connect
+  c_connect;
 
   add_conn(jdbcUrl, username, password) {
-    this.connects.push({
-      jdbcUrl: jdbcUrl,
-      username: username,
-      password: password
-    })
+    const conn = { jdbcUrl: jdbcUrl, username: username, password: password }
+    this.connects.push(conn)
   }
 }
