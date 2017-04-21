@@ -1,1 +1,1 @@
-
+{ "name": "table", "input": {"type": "select", "value": "select 'a', 'b' from dual" } }
