@@ -1,4 +1,4 @@
 [
-  { "name": "table object", "input": {"type": "select", "value": "select 'a', 'b' from dual" } },
+  { "name": "table", "input": {"type": "select", "value": "select 'a', 'b' from dual" } },
   { "name": "tigger object", "input": { "type": "input", "value": ["xxx", "yyy"] } }
 ]
