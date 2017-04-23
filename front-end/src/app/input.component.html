@@ -1,0 +1,8 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2" *ngFor="let obj of objs" [ngSwitch]="obj.input.type.toUpperCase()">
+      <input-select *ngSwitchCase="'SELECT'" [obj]="obj" [conn]="_conn"> </input-select>
+      <input-input *ngSwitchCase="'INPUT'" [obj]="obj" [conn]="_conn"> </input-input>
+    </div>
+  </div>
+</div>
