@@ -5,7 +5,9 @@ export interface QueryInfo {
 }
 
 export interface ConnInfo {
-  jdbcUrl: string;
+  ip:string;
+  port:string;
+  service:string;
   username: string;
   password: string;
 }

@@ -9,7 +9,13 @@ import scala.collection.mutable.ArrayBuffer
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
-case class QueryInfo(jdbcUrl: String, username: String, password: String, sqlText: String, parameters: Seq[String])
+case class Connector(ip: String, port: String, service: String, username: String, password: String)
+
+object Connector {
+  implicit val format: Format[Connector] = Json.format
+}
+
+case class QueryInfo(sqlText: String, parameters: Seq[String])
 
 object QueryInfo {
   implicit val format: Format[QueryInfo] = Json.format
@@ -26,6 +32,12 @@ object CollectingOracle {
 
   Class.forName("oracle.jdbc.driver.OracleDriver").newInstance();
 
+  var connector: Connector = null
+
+  def setConnect(conn: Connector) = {
+    connector = conn
+  }
+
   def mode(mode: String, qi: QueryInfo): String = {
     QueryModeEnum.withName(mode.toUpperCase) match {
       case QueryModeEnum.ARRAY => query[List[String]](qi, queryToAarry)
@@ -33,16 +45,23 @@ object CollectingOracle {
     }
   }
 
+  def getJdbcUrl(ip: String, port: String, service: String): String = {
+    s"jdbc:oracle:thin:@${ip}:${port}/${service}"
+  }
+
   def query[T](qi: QueryInfo, f: (ResultSet) => JsValue) = {
-    val jdbcUrl = qi.jdbcUrl
-    val username = qi.username
-    val password = qi.password
+    val ip = connector.ip
+    val port = connector.port
+    val service = connector.service
+    val username = connector.username
+    val password = connector.password
     val sqlText = qi.sqlText
     val parameters = qi.parameters
 
+    val jdbcUrl = getJdbcUrl(ip, port, service)
     val conn = DriverManager.getConnection(jdbcUrl, username, password)
     val stmt = conn.prepareStatement(sqlText)
-    (1 to parameters.length).foreach(num => stmt.setObject(num, 5))
+    (1 to parameters.length).foreach(num => stmt.setObject(num, parameters(num - 1)))
     val rs = stmt.executeQuery()
 
     val rows = f(rs)

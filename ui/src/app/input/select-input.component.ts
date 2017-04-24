@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { InputInterface } from './input.itf';
 import { QueryService } from '../query.service';
@@ -13,7 +14,6 @@ import { ConnInfo } from '../queryinfo.itf';
 export class SelectInputComponent implements InputInterface {
 
   @Input() obj;
-  @Input() conn: ConnInfo;
 
   params: string[] = [];
 
@@ -25,7 +25,8 @@ export class SelectInputComponent implements InputInterface {
 
   ready = false;
 
-  constructor(private qs: QueryService) { }
+  constructor(private router: Router,
+    private qs: QueryService) { }
 
   setParams(idx: number, arg: string) {
     this.params[idx] = arg;
@@ -53,10 +54,14 @@ export class SelectInputComponent implements InputInterface {
   }
 
   init() {
-    this.qs.rdbmsQuery(this.conn, this.obj.input.value, []).then(rs => {
+    this.qs.rdbmsQuery( this.obj.input.value, []).then(rs => {
       console.info(rs)
       this.initQueryResult(rs);
       this.ready = true;
     });
+  }
+
+  displayDetails() {
+    this.router.navigate(['/details', { name: this.obj.name, param: this.params }]);
   }
 }

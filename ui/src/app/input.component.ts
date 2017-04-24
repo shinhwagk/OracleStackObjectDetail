@@ -13,17 +13,7 @@ import { QueryService } from './query.service';
 export class InputComponent implements OnInit {
   names = [];
 
-  @Input()
-  set conn(conn) {
-    this._conn = conn
-  }
-
-  _conn;
-
   constructor(private qs: QueryService) { }
-  // get conn() {
-  //   return this._conn;
-  // }
 
   objs = []
 

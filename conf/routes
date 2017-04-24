@@ -2,4 +2,6 @@ GET /               controllers.Application.index
 
 POST /v1/query/:mode controllers.Application.query(mode:String)
 
+POST /v1/connect controllers.Application.setConnect
+
 GET /assets/*file   controllers.Assets.at(path="/public", file)

@@ -12,7 +12,6 @@ export class InputInputComponent implements  InputInterface {
   params: any[] = [1, 'x2'];
 
   @Input() obj;
-  @Input() conn;
   constructor() { }
 
   init() {

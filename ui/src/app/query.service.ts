@@ -10,26 +10,31 @@ import { QueryInfo, ConnInfo } from './queryinfo.itf';
 @Injectable()
 export class QueryService {
 
-  private queryUrl = '/query/array';
+  private queryUrl = '/v1/query/array';
 
   private headers = new Headers({ 'Content-Type': 'application/json' });
 
   constructor(private http: Http) { }
 
-  rdbmsQuery(conn: ConnInfo, sqlText: string, args: any[]): Promise<Array<string>[]> {
-    const queryinfo: QueryInfo = {
-      ci: conn,
+  rdbmsQuery(sqlText: string, args: string[]): Promise<Array<string>[]> {
+    const queryinfo = {
       sqlText: sqlText,
       parameters: <string[]>args
     };
     const body = queryinfo;
+    console.info("body",body)
     return this.http.post(this.queryUrl, JSON.stringify(body), { headers: this.headers })
       .map(response => response.json())
       .toPromise();
   }
 
-  configQuery(url:string) {
+  configQuery(url: string) {
     return this.http.get(url).map(response => response.json())
+      .toPromise();
+  }
+
+  setConnector(conn: ConnInfo) {
+    return this.http.post("/v1/connect", JSON.stringify(conn), { headers: this.headers })
       .toPromise();
   }
 }

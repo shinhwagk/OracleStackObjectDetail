@@ -5,6 +5,6 @@
       <option disabled>{{names[i]}}</option>
       <option *ngFor="let value of filterValues(i)" [value]="value">{{value}}</option>
     </select>
-    <!--<button (click)="displayDetails(params,obj.input.value)">submit</button>-->
+    <button (click)="displayDetails()">submit</button>
   </div>
 </div>

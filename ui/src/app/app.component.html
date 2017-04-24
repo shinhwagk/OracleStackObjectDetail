@@ -1,16 +1,18 @@
 <nav class="navbar navbar-light navbar-toggleable-md bg-faded">
   <a class="navbar-brand" href="#">{{title}}</a>
   <div class="form-inline">
-    <input type="text" #jdbcUrl placeholder="jdbcUrl" size="80">
+    <input type="text" #ip placeholder="ip">
+    <input type="text" #port placeholder="port">
+    <input type="text" #service placeholder="service">
     <input type="text" #username placeholder="username">
     <input type="password" #password placeholder="password">
-    <button (click)="add_conn(jdbcUrl.value,username.value,password.value)">+</button>
+    <button (click)="add_conn(ip.value,port.value,service.value,username.value,password.value)">+</button>
   </div>
-  <select [(ngModel)]="c_connect">
-    <option *ngFor="let conn of connects;" [ngValue]="conn">{{conn.jdbcUrl}} -- {{conn.username}}</option>
+  <select [(ngModel)]="c_connect" (change)="setConnector()">
+    <option *ngFor="let conn of connects;" [ngValue]="conn" >{{conn.ip}}:{{conn.port}}/{{conn.service}} -- {{conn.username}}</option>
   </select>
 </nav>
- 
-<app-input *ngIf="c_connect" [conn]="c_connect"></app-input>
+
+<app-input *ngIf="c_connect"></app-input>
 
 <router-outlet></router-outlet>
