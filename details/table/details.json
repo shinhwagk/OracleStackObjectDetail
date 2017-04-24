@@ -1,10 +1,6 @@
 [
      {
-         "name": "abc",
-         "query": "select * from abc where a=? and b=?"
-     },
-     {
-         "name": "33",
-         "query": "select * from ccc where a=? and b=?"
+         "name": "index",
+         "query": "select index_name from dba_indexes where owner=? and table_name=?"
      }
  ]
