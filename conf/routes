@@ -1,4 +1,5 @@
 GET /               controllers.Application.index
+GET /xxxx               controllers.Application.xxxx
 
 POST /v1/query/:mode controllers.Application.query(mode:String)
 

@@ -1,9 +1,7 @@
-@(title:String)
+@(title:String, objs:List[Input])
 
 @main(title){
     @nav()
-    <h1>Welcome to Play!</h1>
-    <div class="alert alert-success" role="alert">
-        <strong>Well done!</strong> You successfully read this important alert message.
-    </div>
+    @input(objs)
+    <a href="@routes.Application.xxxx">@routes.Application.xxxx</a>
 }

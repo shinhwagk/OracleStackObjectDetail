@@ -1,16 +1,45 @@
 package controllers
 
+import javax.inject.Inject
+
 import models.{CollectingOracle, Connector, QueryInfo}
+import play.api.libs.json.{Format, Json}
+import play.api.libs.ws.WSClient
 import play.api.mvc._
 
-import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.Future
+import scala.concurrent.{ExecutionContext, Future}
 
-class Application extends Controller {
+case class Input(name: String, input: String, sql: String, sqlFile: Option[String])
 
-  def index = Action {
-    Ok(views.html.index("oracle object details."))
+object Input {
+  implicit val format: Format[Input] = Json.format
+}
+
+class Application @Inject()(implicit ws: WSClient, context: ExecutionContext) extends Controller {
+
+  def index = Action.async {
+    ws.url("https://raw.githubusercontent.com/shinhwagk/OracleStackObjectDetail/config/objects.json").get()
+      .flatMap { response =>
+        val x = response.json.as[List[String]].map(obj => {
+          val url = s"https://raw.githubusercontent.com/shinhwagk/OracleStackObjectDetail/config/objects/${obj}.json"
+          ws.url(url).get().map(_.json.as[Input])
+        })
+        val y = Future.sequence(x)
+        y.map(yy => Ok(views.html.index("xxx", yy)))
+      }
   }
+
+  def xxxx = Action {
+    Ok(views.html.test())
+  }
+
+  //  def input = Action.async {
+  //    val request: WSRequest = ws.url("https://raw.githubusercontent.com/shinhwagk/OracleStackObjectDetail/config/objects.json")
+  //    request.get().map { response =>
+  //      println(response.json)
+  //      Ok(views.html.index("oracle object details."))
+  //    }
+  //  }
 
   def setConnect() = Action { request =>
     println(request.body.asJson)

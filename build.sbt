@@ -8,7 +8,7 @@ scalaVersion in ThisBuild := "2.11.11"
 
 lazy val root = (project in file(".")).enablePlugins(PlayScala)
 
-libraryDependencies += filters
+libraryDependencies ++= Seq(filters, ws)
 
 libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "2.0.0" % Test
 
